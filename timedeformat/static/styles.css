@@ -1,14 +1,11 @@
 .container {
-  max-width: 650px; }
+  max-width: 600px; }
 
 .inline {
   display: inline; }
 
-.center-text {
+.text-center {
   text-align: center; }
-
-.padded {
-  padding: 20px; }
 
 .red-text {
   color: #9a3408; }
@@ -19,17 +16,19 @@
 .box {
   padding: 20px;
   background: #f3f3f3;
-  margin: 20px;
   border-radius: .4rem; }
 
 .full-width {
   width: 100%; }
 
+.monospace {
+  font-family: monospace; }
+
 input[type='color'], input[type='date'], input[type='datetime'], input[type='datetime-local'], input[type='email'], input[type='month'], input[type='number'], input[type='password'], input[type='search'], input[type='tel'], input[type='text'], input[type='url'], input[type='week'], input:not([type]), textarea, select {
   background-color: rgba(255, 255, 255, 0.5); }
 
 .top-spacer {
-  height: 10vh; }
+  height: 2vh; }
 
 h0 {
   font-size: 72px; }
@@ -45,12 +44,8 @@ h0 {
 
 .format-result {
   font-size: 32px;
-  font-weight: bold; }
-
-.not-an-input {
-  background: none !important;
-  border: none !important;
-  width: fit-content !important; }
+  font-weight: bold;
+  margin-bottom: 30px; }
 
 @media (min-width: 576px) {
   .lg-fit-content {

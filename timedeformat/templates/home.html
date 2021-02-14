@@ -10,10 +10,10 @@
     <script src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.0.0-beta.4-TQFv5Y2xd4hn2VnTxVul/mode=imports,min/optimized/@hotwired/turbo.js"></script>
 </head>
 <body>
-    <div class="top-spacer"></div>
-
     <section class="container">
-        <div class="padded">
+        <div class="top-spacer"></div>
+
+        <div>
             <h1>date_deformat</h1>
             <h5>Generate Python datetime format strings from your desired output</h5>
         </div>
@@ -22,13 +22,14 @@
             <div class="row">
                 <div class="column">
                     Original time <br>
-                    <span class="black-text">{{ time_input }}</span>
+                    <span class="black-text monospace">{{ time_input }}</span>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="column">
-                    Desired Output <input type="text" name="desired_output" value="{{ desired_output }}">
+                    Desired Output
+                    <input class="monospace" type="text" name="desired_output" value="{{ desired_output }}">
                 </div>
                 <div class="column lg-fit-content">
                     <input type="submit" value="Build" class="full-width" style="margin-top: 24px;">
@@ -36,11 +37,13 @@
             </div>
         </form>
 
-        <div class="center-text box">
-            <div class="center-text padded">
+        <div class="text-center box">
+            <div class="text-center">
                 <h5>Result</h5>
-                <input class="format-result not-an-input" readonly value="{{ format_result }}">
-                <button class="copy-btn" style="vertical-align:top;">
+                <div class="format-result monospace">
+                    {{ format_result }}
+                </div>
+                <button class="copy-btn button-outline">
                     Copy
                 </button>
             </div>
@@ -55,17 +58,12 @@
         var copyTextareaBtn = document.querySelector('.copy-btn');
 
         copyTextareaBtn.addEventListener('click', function(event) {
-          var copyTextarea = document.querySelector('.format-result');
-          copyTextarea.focus();
-          copyTextarea.select();
-
-          try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-            console.log('Copying text command was ' + msg);
-          } catch (err) {
-            console.log('Oops, unable to copy');
-          }
+            var copyTextarea = document.querySelector('.format-result');
+            navigator.clipboard.writeText(copyTextarea.textContent).then(function() {
+                console.log('Async: Copying to clipboard was successful!');
+            }, function(err) {
+                console.error('Async: Could not copy text: ', err);
+            });
         });
     </script>
 </body>
