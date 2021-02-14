@@ -8,20 +8,21 @@ from datetime import datetime
 app = Flask(__name__)
 limiter = Limiter(app, key_func=get_remote_address)
 
-TIME_INPUT = datetime(2021, 8, 29, 19, 5, 35)
-DEFAULT_DESIRED_OUTPUT = "Sunday, 5 minutes past 7"
+DEFAULT_DT_INPUT = datetime.now()
+DEFAULT_DESIRED_OUTPUT = DEFAULT_DT_INPUT.strftime("%A, %-M minutes past %-I%p")
 
 
 @limiter.limit("20 per minute", override_defaults=False, error_message=" ")
 @app.route("/")
 def home():
-    desired_output = request.args.get("desired_output") or DEFAULT_DESIRED_OUTPUT
-    time_format = build_time_format(TIME_INPUT, desired_output)
+    dt_input_iso = request.args.get("input") or DEFAULT_DT_INPUT.isoformat()
+    desired_output = request.args.get("output") or DEFAULT_DESIRED_OUTPUT
+    dt_format = build_time_format(datetime.fromisoformat(dt_input_iso), desired_output)
     return render_template(
         "home.html",
-        time_input=TIME_INPUT,
-        desired_output=desired_output,
-        format_result=time_format,
+        input=dt_input_iso,
+        output=desired_output,
+        format_result=dt_format,
     )
 
 

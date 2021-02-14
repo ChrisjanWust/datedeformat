@@ -21,15 +21,15 @@
         <form action="{{ url_for('home') }}" method="get" class="box">
             <div class="row">
                 <div class="column">
-                    Original time <br>
-                    <span class="black-text monospace">{{ time_input }}</span>
+                    Input Time <br>
+                    <input class="monospace" type="text" name="input" value="{{ input }}">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="column">
                     Desired Output
-                    <input class="monospace" type="text" name="desired_output" value="{{ desired_output }}">
+                    <input class="monospace" type="text" name="output" value="{{ output }}">
                 </div>
                 <div class="column lg-fit-content">
                     <input type="submit" value="Build" class="full-width" style="margin-top: 24px;">
@@ -39,7 +39,7 @@
 
         <div class="text-center box">
             <div class="text-center">
-                <h5>Result</h5>
+                <h5>Format String</h5>
                 <div class="format-result monospace">
                     {{ format_result }}
                 </div>
