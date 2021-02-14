@@ -43,6 +43,15 @@ h0 {
 .black-text {
   color: black; }
 
+.format-result {
+  font-size: 32px;
+  font-weight: bold; }
+
+.not-an-input {
+  background: none !important;
+  border: none !important;
+  width: fit-content !important; }
+
 @media (min-width: 576px) {
   .lg-fit-content {
     width: fit-content !important; } }
