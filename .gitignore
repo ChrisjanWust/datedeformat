@@ -1,0 +1,7 @@
+venv/
+.idea/
+**__pycache__/
+
+# local dev script with shortcuts
+.workon.sh
+workbook.md
