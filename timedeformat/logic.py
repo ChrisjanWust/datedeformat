@@ -36,7 +36,7 @@ def build_time_format(input_dt: datetime, desired_output: str):
     pattern = ""
     while desired_output:
         # identify a segment of the output (digits next to eachother, months, AM/PM)
-        segment = re.match("(\d+)|([A-Z][a-z]+)|(A|PM)", desired_output)
+        segment = re.match("(\d+)|([A-Z][a-z]+)|(AM|PM)", desired_output)
         if not segment:
             # if no segment found, added the text directly to the pattern
             extracted_len = 1
