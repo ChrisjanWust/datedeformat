@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>date_deformat</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="top-spacer"></div>
+
+    <section class="container">
+        <div class="padded">
+            <h1>TimeDeformat</h1>
+            <h5>Generate Python datetime formats from your desired output</h5>
+        </div>
+
+        <form action="{{ url_for('home') }}" method="get" class="box">
+            <div class="row">
+                <div class="column">
+                    Original time <br>
+                    <span class="black-text">{{ time_input }}</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="column">
+                    Desired Output <input type="text" name="desired_output" value="{{ desired_output }}">
+                </div>
+                <div class="column lg-fit-content">
+                    <input type="submit" value="Build" class="full-width" style="margin-top: 24px;">
+                </div>
+            </div>
+        </form>
+
+        <div class="center-text box">
+            <div class="center-text padded">
+                <h2><b>
+                    {{ format_result }}
+                </b></h2>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>
