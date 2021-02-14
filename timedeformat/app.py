@@ -3,12 +3,12 @@ from .logic import build_time_format
 
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from datetime import datetime
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 limiter = Limiter(app, key_func=get_remote_address)
 
-DEFAULT_DT_INPUT = datetime.now()
+DEFAULT_DT_INPUT = datetime.utcnow() + timedelta(hours=2)
 DEFAULT_DESIRED_OUTPUT = DEFAULT_DT_INPUT.strftime("%A, %-M minutes past %-I%p")
 
 
